@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout — Forma Studio{% endblock %}
+{% block meta_description %}Review your Forma Studio order and pay securely with PayPal.{% endblock %}
+
+{% block content %}
+<section class="checkout-page page-shell" data-checkout-root
+         data-create-order-url="{% url 'paypal-create-order' %}"
+         data-capture-order-url="{% url 'paypal-capture-order' %}"
+         data-static-prefix="{% static '' %}">
+    <div class="checkout-heading">
+        <p class="eyebrow">Almost yours</p>
+        <h1>Thoughtful things,<br><em>on their way.</em></h1>
+    </div>
+    <div class="checkout-layout">
+        <form class="checkout-details" data-checkout-form>
+            {% csrf_token %}
+            <p class="eyebrow">Your details</p>
+            {% if form.non_field_errors %}<p class="form-error" role="alert">{{ form.non_field_errors }}</p>{% endif %}
+            <div class="form-field">
+                <label for="{{ form.name.id_for_label }}">Full name</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.email.id_for_label }}">Email address</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <div class="checkout-payment">
+                <p class="eyebrow">Secure payment</p>
+                <p>Pay with PayPal. Your payment details are entered securely with PayPal and are never stored on this site.</p>
+                {% if paypal_client_id %}
+                    <div class="paypal-buttons" data-paypal-buttons></div>
+                {% else %}
+                    <p class="payment-unavailable" role="status">PayPal checkout is not connected yet. Set the PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET environment variables to enable secure payments.</p>
+                {% endif %}
+                <p class="checkout-status" data-checkout-status role="status" aria-live="polite"></p>
+            </div>
+        </form>
+        <aside class="checkout-summary" aria-labelledby="checkout-summary-title">
+            <p class="eyebrow">A good choice</p>
+            <h2 id="checkout-summary-title">Your order</h2>
+            <div class="checkout-items" data-checkout-items></div>
+            <p class="checkout-empty" data-checkout-empty>Your bag is empty. <a href="{% url 'myproduct' %}">Find a favourite</a></p>
+            <div class="checkout-total"><span>Subtotal</span><strong data-checkout-total>$0.00</strong></div>
+            <p class="checkout-shipping">Shipping and applicable taxes are calculated by PayPal.</p>
+        </aside>
+    </div>
+</section>
+{{ products|json_script:"checkout-products" }}
+{% if paypal_client_id %}
+<script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id|urlencode }}&amp;currency=USD&amp;intent=capture"></script>
+{% endif %}
+{% endblock %}

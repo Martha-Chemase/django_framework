@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Journal — Forma Studio{% endblock %}
+{% block meta_description %}Notes on a more thoughtful wardrobe, getting dressed with ease, and the pieces worth keeping.{% endblock %}
+
+{% block content %}
+<section class="journal-intro page-shell">
+    <p class="eyebrow">Notes from the studio</p>
+    <h1>A little more<br><em>thought in every day.</em></h1>
+    <p>Ideas, inspiration and small reminders to make getting dressed feel like you.</p>
+</section>
+<section class="journal-grid page-shell" aria-label="Studio journal articles">
+    <article class="journal-card journal-card--featured">
+        <a class="journal-card__image" href="{% url 'myabout' %}">
+            <img src="{% static 'images/post-large-image1.jpg' %}" alt="A calm, well-considered everyday wardrobe" loading="lazy">
+        </a>
+        <div class="journal-card__copy">
+            <p class="eyebrow">The considered closet · 5 min read</p>
+            <h2><a href="{% url 'myabout' %}">A wardrobe that feels like your own</a></h2>
+            <p>Start with what you reach for, keep what makes you feel good, and let the rest follow.</p>
+            <a class="text-link" href="{% url 'myabout' %}">Read our point of view <span aria-hidden="true">→</span></a>
+        </div>
+    </article>
+    <article class="journal-card">
+        <a class="journal-card__image" href="{% url 'myproduct' %}">
+            <img src="{% static 'images/post-large-image2.jpg' %}" alt="Soft layers ready for an everyday outing" loading="lazy">
+        </a>
+        <div class="journal-card__copy">
+            <p class="eyebrow">Wear it well · 3 min read</p>
+            <h2><a href="{% url 'myproduct' %}">The art of the easy layer</a></h2>
+            <p>Three simple ways to make the most-loved pieces in your closet work a little harder.</p>
+            <a class="text-link" href="{% url 'myproduct' %}">Find your next layer <span aria-hidden="true">→</span></a>
+        </div>
+    </article>
+    <article class="journal-card">
+        <a class="journal-card__image" href="{% url 'myabout' %}">
+            <img src="{% static 'images/post-large-image3.jpg' %}" alt="An outfit chosen for comfort and staying power" loading="lazy">
+        </a>
+        <div class="journal-card__copy">
+            <p class="eyebrow">A slower wardrobe · 4 min read</p>
+            <h2><a href="{% url 'myabout' %}">Buy less, love it longer</a></h2>
+            <p>Our favourite style rule is simple: choose the pieces you can imagine wearing on repeat.</p>
+            <a class="text-link" href="{% url 'myabout' %}">Get to know Forma <span aria-hidden="true">→</span></a>
+        </div>
+    </article>
+</section>
+<section class="journal-signoff">
+    <div class="page-shell">
+        <p class="eyebrow">A good place to start</p>
+        <h2>Find a piece that<br><em>feels like you.</em></h2>
+        <a class="button button--dark" href="{% url 'myproduct' %}">Explore the collection <span aria-hidden="true">↗</span></a>
+    </div>
+</section>
+{% endblock %}

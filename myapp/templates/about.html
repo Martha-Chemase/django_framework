@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our story — Forma Studio{% endblock %}
+{% block meta_description %}Learn about Forma Studio's approach to thoughtful, versatile everyday style.{% endblock %}
+
+{% block content %}
+<section class="story-hero page-shell">
+    <p class="eyebrow">A little less, a lot more intention</p>
+    <h1>Better things,<br><em>fewer of them.</em></h1>
+    <p>Forma is for the in-between moments, the well-worn favourites, and the feeling of finding something that's just right.</p>
+    <span class="story-hero__mark" aria-hidden="true">✳</span>
+</section>
+<section class="story-content page-shell">
+    <div class="story-content__aside"><span>01 — The idea</span><p>Good style should feel like<br><em>coming home.</em></p></div>
+    <div class="story-content__body">
+        <p class="story-lead">We started Forma with a simple thought: what if your wardrobe worked a little harder, and made you feel a little more like yourself?</p>
+        <p>We curate pieces that are easy to wear, easy to love and easy to make your own. The kind of pieces you reach for on a busy morning, pack for a weekend away, and keep coming back to for years.</p>
+        <p>No complicated rules. No fleeting must-haves. Just a considered collection, a point of view, and room for your own.</p>
+        <a class="button button--dark" href="{% url 'myproduct' %}">Explore the collection <span aria-hidden="true">↗</span></a>
+    </div>
+</section>
+<section class="story-values">
+    <div class="page-shell story-values__grid">
+        <article><span aria-hidden="true">01</span><h2>Thoughtful by design</h2><p>Versatile silhouettes and considered details you can make your own.</p></article>
+        <article><span aria-hidden="true">02</span><h2>Made for real life</h2><p>Comfortable, wearable pieces that feel as good on a Tuesday as they do on a night out.</p></article>
+        <article><span aria-hidden="true">03</span><h2>Keep what you love</h2><p>We believe the best wardrobe is built slowly, with pieces you want to wear on repeat.</p></article>
+    </div>
+</section>
+<section class="story-editorial page-shell">
+    <img src="{% static 'images/baner_image06.jpg' %}" alt="A considered look from the Forma Studio collection" loading="lazy">
+    <div>
+        <p class="eyebrow">A little more about us</p>
+        <h2>Keep the pieces<br>that <em>feel like you.</em></h2>
+        <p>Our collection is designed to work together and live beyond a single season. Find a favourite, make it your own, and wear it your way.</p>
+        <a class="button button--dark" href="{% url 'journal' %}">Read the studio journal <span aria-hidden="true">↗</span></a>
+    </div>
+</section>
+{% endblock %}

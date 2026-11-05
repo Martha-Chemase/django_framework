@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shop all — Forma Studio{% endblock %}
+{% block meta_description %}Browse considered clothing and accessories from Forma Studio. Easy-to-wear essentials, made to last.{% endblock %}
+
+{% block content %}
+<section class="catalog page-shell">
+    <div class="catalog-intro">
+        <p class="eyebrow">The Forma collection</p>
+        <h1>Pieces to live in.</h1>
+        <p>Considered layers, easy essentials and little details that make getting dressed feel good.</p>
+    </div>
+    <div class="catalog-toolbar">
+        <div class="filter-list" role="group" aria-label="Filter products by category">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All pieces</button>
+            <button class="filter-button" type="button" data-filter="clothing" aria-pressed="false">Clothing</button>
+            <button class="filter-button" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
+        </div>
+        <div class="catalog-tools">
+            <label class="search-field">
+                <span class="visually-hidden">Search products</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg>
+                <input type="search" placeholder="Find a favourite" data-product-search>
+            </label>
+            <label class="sort-field"><span class="visually-hidden">Sort products</span><select data-product-sort><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
+        </div>
+    </div>
+    <p class="catalog-count" data-results-count aria-live="polite">{{ products|length }} pieces</p>
+    <div class="product-grid catalog-grid" data-product-grid>
+        {% for product in products %}
+            {% include 'partials/product_card.html' %}
+        {% endfor %}
+    </div>
+    <div class="empty-results" data-empty-results hidden><span aria-hidden="true">✳</span><h2>No pieces found</h2><p>Try a different search or browse all of our collection.</p><button class="text-link" type="button" data-clear-filters>Clear filters <span aria-hidden="true">→</span></button></div>
+</section>
+{% endblock %}

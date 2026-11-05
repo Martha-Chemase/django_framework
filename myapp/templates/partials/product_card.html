@@ -1,0 +1,14 @@
+{% load static %}
+<article class="product-card" data-product-card data-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}" data-category="{{ product.category }}" data-search="{{ product.name|lower }} {{ product.category }}">
+    <div class="product-card__media">
+        <div class="product-card__image-link">
+            <img src="{% static product.image %}" alt="{{ product.image_alt }}" loading="lazy">
+        </div>
+        {% if product.tag %}<span class="product-tag">{{ product.tag }}</span>{% endif %}
+        <button class="product-add" type="button" data-add-to-cart data-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}" aria-label="Add {{ product.name }} to your bag"><span aria-hidden="true">+</span> Add to bag</button>
+    </div>
+    <div class="product-card__details">
+        <div><p class="product-card__category">{{ product.category_label }}</p><h3>{{ product.name }}</h3></div>
+        <p class="product-card__price">${{ product.price|floatformat:2 }}</p>
+    </div>
+</article>
